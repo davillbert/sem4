@@ -31,6 +31,6 @@ public:
 int main()
 {
 	BankCell Exem1;
-	Person Alisa(*Exem1), Bob(*Exem1);
+	Person Alisa(Exem1), Bob(Exem1);
 
 }
