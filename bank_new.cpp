@@ -1,4 +1,5 @@
 #include <iostream>
+#include<vector>
 using namespace std;
 
 
@@ -25,7 +26,7 @@ class Person
 	//умеет давать информацию жив или мерт (в зони видимости или нет), дэлитнули или нет, создали или нет
 	//умеет умирать
 	//умеет получать ячейку, конструктор
-	std::shared_ptr<BankCell> Piece;
+	vector<std::shared_ptr<BankCell>> Piece;
 public:
 
 //	BankCell BC;
@@ -39,9 +40,12 @@ public:
 	std::shared_ptr<BankCell> getBankCell() { return Piece; }
 
 	//BankCell& BankCell::operator =(const BankCell&)
+	void add_BC(std::shared_ptr<BankCell> BC_) { Piece.emplace_back(BC_); }
 
 	std::shared_ptr<BankCell> setBankCell() {
-		auto Piece = std::make_shared<BankCell>();
+		auto BC = std::make_shared<BankCell>();
+		Piece.emplace_back(BC);
+		return BC;
 	} //даем ячейку
 
 };
@@ -51,6 +55,6 @@ public:
 int main()
 {
 	BankCell Exem1; //создали ячейку
-	Person Alisa->setBankCell(std::make_shared<BankCell>(Exem1)), Bob->setBankCell(Alisa.getBankCell()); // присвоили
+	Person Alisa.add_BC(Exem1), Bob.add_BC(Alisa.setBankCell()); // присвоили
 	return 0;
 }
