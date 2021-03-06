@@ -37,7 +37,7 @@ public:
 	
 	 //даем челу ячейку
 
-	std::shared_ptr<BankCell> getBankCell() { return Piece; }
+	vector<std::shared_ptr<BankCell>> getBankCell() { return Piece; }
 
 	//BankCell& BankCell::operator =(const BankCell&)
 	void add_BC(std::shared_ptr<BankCell> BC_) { Piece.emplace_back(BC_); }
@@ -54,7 +54,8 @@ public:
 
 int main()
 {
-	BankCell Exem1; //создали ячейку
-	Person Alisa.add_BC(Exem1), Bob.add_BC(Alisa.setBankCell()); // присвоили
+	BankCell* Exem1 = new BankCell; //создали ячейку
+	std::shared_ptr<BankCell>ex(Exem1);
+	Person Alisa.add_BC(ex), Bob.add_BC(Alisa.setBankCell()); // присвоили
 	return 0;
 }
